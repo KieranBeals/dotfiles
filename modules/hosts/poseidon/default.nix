@@ -6,6 +6,7 @@ let
     "gaming"
     "messaging"
     "school"
+    "development"
 ];
 in
 {
