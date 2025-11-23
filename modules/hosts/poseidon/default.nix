@@ -5,6 +5,7 @@ let
     "desktop"
     "gaming"
     "messaging"
+    "school"
 ];
 in
 {
