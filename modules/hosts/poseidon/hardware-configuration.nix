@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  flake.modules.nixos."hosts/poseidon" = 
+  flake.modules.nixos."hosts/poseidon" =
 { config, lib, pkgs, modulesPath, ... }:
 
 {
@@ -41,13 +41,13 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   hardware.graphics.enable = true;
-  
+
   services.xserver.videoDrivers = [ "nvidia" ];
-  
+
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;
     nvidiaSettings = true;
-  }; 
+  };
 };
 }
