@@ -3,6 +3,7 @@ let
   modules = [
     "base"
     "desktop"
+    "gaming"
 ];
 in
 {
