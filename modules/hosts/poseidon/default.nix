@@ -4,6 +4,7 @@ let
     "base"
     "desktop"
     "gaming"
+    "messaging"
 ];
 in
 {
