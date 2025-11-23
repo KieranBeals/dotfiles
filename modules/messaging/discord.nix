@@ -3,7 +3,7 @@
 	{ pkgs, ... }:
 	{
 	  home.packages = with pkgs; [
-      equicord
+      equibop
 		];
   };
 }
