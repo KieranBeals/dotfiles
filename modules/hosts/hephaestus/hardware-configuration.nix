@@ -5,7 +5,10 @@
     imports =
       [ (modulesPath + "/installer/scan/not-detected.nix")
       ];
-  
+
+    networking.networkmanager.enable = true;
+    networking.networkmanager.wifi.powersave = false; # EDUROAM :)))
+	 
 	  boot.loader.systemd-boot.enable = true;
 		boot.loader.efi.canTouchEfiVariables = true;
 		boot.loader.efi.efiSysMountPoint = "/boot";
