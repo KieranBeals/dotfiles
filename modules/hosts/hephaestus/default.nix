@@ -2,6 +2,11 @@
 let
   modules = [
 	  "base"
+    "desktop"
+    "gaming"
+    "messaging"
+    "school"
+    "development"
 	];
 in
 {
