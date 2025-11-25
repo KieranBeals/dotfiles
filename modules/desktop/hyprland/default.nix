@@ -16,11 +16,6 @@
          recursive = false;
        };
 
-       home.file.".config/waybar" = {
-         source = ./waybar-config;
-         recursive = true;
-       };
-
        home.file.".config/swaync" = {
          source = ./swaync;
          recursive = true;
