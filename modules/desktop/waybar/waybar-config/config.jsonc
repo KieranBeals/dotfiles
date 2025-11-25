@@ -48,8 +48,8 @@
     },
     "format": "{capacity}\n{icon}",
     "format-full": "{capacity}\n{icon}",
-    "format-charging": "{capacity}\n",
-    "format-plugged": "{capacity}\n",
+    "format-charging": "{capacity}\n\n{icon}",
+    "format-plugged": "{capacity}\n\n{icon}",
     //"format-alt": "{time} {icon}",
     "tooltip-format": "{power} W, {timeTo}",
     // "format-good": "", // An empty format will hide the module
