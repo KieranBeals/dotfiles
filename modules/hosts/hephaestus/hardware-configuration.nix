@@ -1,11 +1,14 @@
 {
 	flake.modules.nixos."hosts/hephaestus" = 
-  { config, lib, pkgs, modulesPath, ... }:
+  { config, lib, modulesPath, ... }:
   {
     imports =
       [ (modulesPath + "/installer/scan/not-detected.nix")
       ];
   
+	  boot.loader.systemd-boot.enable = true;
+		boot.loader.efi.canTouchEfiVariables = true;
+		boot.loader.efi.efiSysMountPoint = "/boot";
     boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" ];
     boot.initrd.kernelModules = [ ];
     boot.kernelModules = [ "kvm-amd"
