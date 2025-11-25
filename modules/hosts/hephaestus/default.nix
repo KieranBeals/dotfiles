@@ -7,6 +7,7 @@ let
     "messaging"
     "school"
     "development"
+    "laptop"
 	];
 in
 {
