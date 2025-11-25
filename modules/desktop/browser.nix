@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.homeManager =
+  flake.modules.homeManager.desktop =
 	{ pkgs, ... }:
 	{
 	  home.packages = with pkgs; [
