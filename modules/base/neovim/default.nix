@@ -10,6 +10,7 @@
       {
   			home.packages = with pkgs; [
 				  inputs.neovim-nightly-overlay.packages.${system}.default
+					ripgrep
 					lua-language-server
 					nixd
 					luarocks
