@@ -6,6 +6,9 @@
         enable = true;
 				xwayland.enable = true;
 			};
+
+			# Tell apps to use Wayland
+			environment.sessionVariables.NIXOS_OZONE_WL = "1";
 		};
 
     homeManager.desktop =
@@ -30,6 +33,9 @@
          hyprpaper
          nerd-fonts.jetbrains-mono
          swaynotificationcenter
+         slurp
+         grim
+         wl-clipboard
        ];
      };};
 }
