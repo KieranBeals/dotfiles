@@ -3,7 +3,6 @@
 # Weather script for Waybar
 # Uses wttr.in API for weather information
 
-LOCATION="auto"  # Can be changed to your city name
 CACHE_FILE="/tmp/waybar-weather-cache"
 CACHE_DURATION=1800  # 30 minutes in seconds
 
@@ -26,25 +25,25 @@ get_weather() {
     # Choose icon based on weather condition
     case "$condition" in
         *"Sunny"*|*"Clear"*)
-            icon=""
+            icon=" "
             ;;
         *"Partly cloudy"*)
-            icon=""
+            icon=" "
             ;;
         *"Cloudy"*|*"Overcast"*)
-            icon=""
+            icon=" "
             ;;
         *"Rain"*|*"Drizzle"*)
-            icon=""
+            icon=" "
             ;;
-        *"Snow"*)
-            icon=""
+        *"Snow"*|*"Light snow"*)
+            icon=" "
             ;;
         *"Thunder"*|*"storm"*)
-            icon=""
+            icon=" "
             ;;
         *"Mist"*|*"Fog"*)
-            icon=""
+            icon=" "
             ;;
         *)
             icon=""
@@ -59,7 +58,7 @@ get_weather() {
     tooltip+="Wind: ${wind_speed} km/h"
 
     # Output JSON for Waybar
-    echo "{\"text\":\"${icon} ${temp}°C\",\"tooltip\":\"${tooltip}\"}"
+    echo "{\"text\":\"${icon}${temp}°C\",\"tooltip\":\"${tooltip}\"}"
 }
 
 # Check cache
