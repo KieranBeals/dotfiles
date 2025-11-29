@@ -10,6 +10,8 @@
 
        home.packages = with pkgs; [
          waybar
+         pavucontrol # audio control
+         btop # TODO: move this
        ];
      };
   };

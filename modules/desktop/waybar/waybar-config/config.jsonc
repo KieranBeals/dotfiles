@@ -1,102 +1,198 @@
-// -*- mode: jsonc -*-
 {
   "layer": "top",
-  "position": "left",
+  "position": "top",
+  "output": ["*"],
+  "height": 36,
+  "spacing": 6,
   "margin-top": 4,
-  "margin-bottom": 4,
-  "margin-left": 4,
-  "width": 40,
+  "margin-left": 8,
+  "margin-right": 8,
+  "exclusive": true,
+  "reload_style_on_change": true,
 
-  "modules-right": ["network", "group/apps", "group/stats"],
+  // ═══════════════════════════════════════════════════════════
+  // MODULE LAYOUT
+  // ═══════════════════════════════════════════════════════════
 
-  "backlight": {
-    "format": "{percent}\n{icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""],
-    "tooltip": false,
-    "justify": "center",
-    "reverse-scrolling": true,
-  },
+  "modules-left": ["custom/launcher", "hyprland/workspaces"],
 
-  "backlight/slider": {
-    "min": 0,
-    "max": 100,
-    "orientation": "vertical",
-  },
+  "modules-center": ["clock"],
 
-  "group/brightness": {
-    "modules": ["backlight", "backlight/slider"],
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": true,
-    },
-  },
+  "modules-right": [
+    "cpu",
+    "temperature#cpu",
+    "custom/gpu-temp",
+    "memory",
+    "disk",
+    "pulseaudio",
+    "network",
+    "battery",
+    "tray",
+    "custom/weather",
+    "custom/power",
+  ],
 
-  "battery": {
-    "states": {
-      // "good": 95,
-      "warning": 30,
-      "critical": 15,
-    },
-    "format": "{capacity}\n{icon}",
-    "format-full": "{capacity}\n{icon}",
-    "format-charging": "{capacity}\n\n{icon}",
-    "format-plugged": "{capacity}\n\n{icon}",
-    //"format-alt": "{time} {icon}",
-    "tooltip-format": "{power} W, {timeTo}, cycles: {cycles}, Health: {health}, Time: {time}",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
-    "format-icons": ["", "", "", "", ""],
-    "justify": "center",
-  },
+  // ═══════════════════════════════════════════════════════════
+  // LEFT MODULES
+  // ═══════════════════════════════════════════════════════════
 
-  "group/stats": {
-    "modules": ["battery", "group/audio", "group/brightness"],
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 750,
-      "transition-left-to-right": false,
-    },
-  },
-
-  "niri/window": {
-    "tooltip": false,
-    "format": "{}",
-    "rotate": 270,
-    "rewrite": {
-      "^null$": "Desktop",
-    },
-  },
-
-  "custom/appmenu": {
-    "format": "󰀻",
+  "custom/launcher": {
+    "format": "",
+    "on-click": "rofi -show drun -show-icons",
     "tooltip": false,
   },
 
-  "wlr/taskbar": {
-    "format": "{icon}",
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "show-special": true,
     "on-click": "activate",
-    "on-click-right": "close",
+    "format": "{name}",
+    "format-icons": {
+      "urgent": "",
+      "default": "",
+    },
   },
 
-  "group/apps": {
-    "modules": ["custom/appmenu", "wlr/taskbar"],
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": false,
+  // ═══════════════════════════════════════════════════════════
+  // CENTER MODULES
+  // ═══════════════════════════════════════════════════════════
+
+  "clock": {
+    "interval": 1,
+    "format": "{:%H:%M:%S}",
+    "format-alt": "{:%A, %d %B %Y  %H:%M:%S}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+      },
     },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // RIGHT MODULES - SYSTEM MONITORING
+  // ═══════════════════════════════════════════════════════════
+
+  "cpu": {
+    "interval": 2,
+    "format": "󰻠 {usage}%",
+    "on-click": "kitty -e btop",
+  },
+
+  "temperature#cpu": {
+    "hwmon-path": "/sys/class/hwmon/hwmon8/temp1_input",
+    "critical-threshold": 80,
+    "format": "󰔏 {temperatureC}°C",
+    "format-critical": "󱃂 {temperatureC}°C",
+    "interval": 2,
+    "tooltip-format": "CPU Temperature: {temperatureC}°C",
+  },
+
+  // "custom/gpu-temp": {
+  // "exec": "~/.config/waybar/scripts/gpu-temp.sh",
+  // "return-type": "json",
+  // "interval": 2,
+  // "tooltip": true,
+  // "on-click": "nvidia-settings",
+  // },
+
+  "memory": {
+    "interval": 2,
+    "format": " {percentage}%",
+    "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G",
+    "on-click": "ghostty -e btop",
+  },
+
+  "disk": {
+    "interval": 30,
+    "format": "󰋊 {percentage_used}%",
+    "path": "/",
+    "tooltip-format": "Used: {used} / {total}\nFree: {free} ({percentage_free}%)",
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // RIGHT MODULES - CONNECTIVITY
+  // ═══════════════════════════════════════════════════════════
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁 Muted",
+    "format-icons": {
+      "headphone": "󰋋",
+      "hands-free": "󰋎",
+      "headset": "󰋎",
+      "phone": "󰏲",
+      "portable": "󰏲",
+      "car": "󰄋",
+      "default": ["󰕿", "󰖀", "󰕾"],
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip-format": "{desc}\n{volume}%",
   },
 
   "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "",
-    "format-ethernet": "󰈀",
-    //"tooltip-format": "{ifname} via {gwaddr} ",
-    "tooltip-format": "{ifname} via {gwaddr} | {essid}: {ipaddr}",
-    // "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "󰤫",
-    "format-alt": "?",
-    // "rotate": 270,
+    "interval": 5,
+    "format-wifi": "󰖩 {signalStrength}%",
+    "format-ethernet": "󰈀 Connected",
+    "format-disconnected": "󰖪 Disconnected",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "󰖩  {essid} ({signalStrength}%)\n⇣ {bandwidthDownBytes}  ⇡ {bandwidthUpBytes}",
+    "tooltip-format-ethernet": "󰈀 {ifname}\n⇣ {bandwidthDownBytes}  ⇡ {bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "nm-connection-editor",
+  },
+
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip-format": "{timeTo}\nPower: {power}W",
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10,
+    "show-passive-items": true,
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // CUSTOM MODULES
+  // ═══════════════════════════════════════════════════════════
+
+  "custom/weather": {
+    "exec": "~/.config/waybar/scripts/weather.sh",
+    "return-type": "json",
+    "interval": 1800,
+    "tooltip": true,
+    "on-click": "xdg-open https://weather.com",
+  },
+
+  "custom/power": {
+    "format": "󰐥",
+    "on-click": "~/.config/waybar/scripts/power-menu.sh",
+    "tooltip": false,
   },
 }
