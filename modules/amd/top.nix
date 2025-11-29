@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.nvidia =
+  flake.modules.homeManager.amd =
   { pkgs, ... }:
   {
     home.packages = with pkgs; [
