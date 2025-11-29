@@ -1,6 +1,6 @@
 {
   "layer": "top",
-  "position": "top",
+  "position": "bottom",
   "output": ["*"],
   "height": 36,
   "spacing": 6,
@@ -91,7 +91,7 @@
   "cpu": {
     "interval": 2,
     "format": "󰻠 {usage}%",
-    "on-click": "kitty -e btop",
+    "on-click": "ghostty -e btop",
   },
 
   "temperature#cpu": {
