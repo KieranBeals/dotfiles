@@ -11,6 +11,7 @@
        home.packages = with pkgs; [
          waybar
          pavucontrol # audio control
+         jq # json processor
          btop # TODO: move this
        ];
      };
