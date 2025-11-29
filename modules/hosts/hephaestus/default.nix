@@ -8,6 +8,7 @@ let
     "school"
     "development"
     "laptop"
+    "amd"
 	];
 in
 {

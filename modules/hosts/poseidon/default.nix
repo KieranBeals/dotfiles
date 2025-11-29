@@ -1,6 +1,7 @@
 { config, ... }:
 let
   modules = [
+    "nvidia"
     "base"
     "desktop"
     "gaming"
