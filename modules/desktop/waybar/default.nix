@@ -12,6 +12,7 @@
          waybar
          pavucontrol # audio control
          jq # json processor
+         sdbus-cpp # Fixes some issues with loading times
        ];
      };
   };
