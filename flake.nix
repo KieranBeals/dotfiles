@@ -69,7 +69,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    # nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     # sops-nix = {
     #   url = "github:Mic92/sops-nix";

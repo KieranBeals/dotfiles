@@ -7,7 +7,6 @@ let
     "messaging"
     "school"
     "development"
-    "laptop"
     "amd"
 	];
 in
