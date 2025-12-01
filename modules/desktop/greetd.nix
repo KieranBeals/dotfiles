@@ -12,5 +12,12 @@
 	     	};
 	    };
 		};
+
+    security.pam.services = {
+      greetd.fprintAuth = true;
+      "greetd-password".fprintAuth = true;
+      sudo.fprintAuth = true;
+      login.fprintAuth = true;
+    };
   };
 }
