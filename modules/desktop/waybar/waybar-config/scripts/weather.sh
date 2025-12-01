@@ -3,9 +3,6 @@
 # Weather script for Waybar
 # Uses wttr.in API for weather information
 
-CACHE_FILE="/tmp/waybar-weather-cache"
-CACHE_DURATION=1800  # 30 minutes in seconds
-
 get_weather() {
     # Fetch weather data from wttr.in
     weather_data=$(curl -s "wttr.in/?format=j1")
@@ -61,15 +58,5 @@ get_weather() {
     echo "{\"text\":\"${icon}${temp}°C\",\"tooltip\":\"${tooltip}\"}"
 }
 
-# Check cache
-if [ -f "$CACHE_FILE" ]; then
-    cache_age=$(($(date +%s) - $(stat -c %Y "$CACHE_FILE")))
-    if [ $cache_age -lt $CACHE_DURATION ]; then
-        cat "$CACHE_FILE"
-        exit 0
-    fi
-fi
-
-# Fetch new data and cache it
 weather_output=$(get_weather)
-echo "$weather_output" | tee "$CACHE_FILE"
+echo "$weather_output"
