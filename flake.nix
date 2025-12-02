@@ -64,6 +64,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sunsetr.url = "github:psi4j/sunsetr";
+
     # nix-index-database = {
     #   url = "github:nix-community/nix-index-database";
     #   inputs.nixpkgs.follows = "nixpkgs";
