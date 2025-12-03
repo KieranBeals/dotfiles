@@ -8,6 +8,8 @@
       inputs.nixos-hardware.nixosModules.framework-16-7040-amd
       ];
 
+    hardware.bluetooth.enable = true;
+
     networking.networkmanager.enable = true;
     networking.networkmanager.wifi.powersave = false; # EDUROAM :)))
 
