@@ -10,7 +10,7 @@
     import-tree.url = "github:vic/import-tree";
 
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOs/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:NixOs/nixpkgs/nixos-25.11";
 		# Really just importing just to import stuff at this point lmao
     systems.url = "github:nix-systems/default-linux";
 
