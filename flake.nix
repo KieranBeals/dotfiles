@@ -73,6 +73,11 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
+    x1-control-panel = {
+      url = "github:Blu3SoulsIT/NiX1-Control-Panel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # sops-nix = {
     #   url = "github:Mic92/sops-nix";
     #   inputs.nixpkgs.follows = "nixpkgs";

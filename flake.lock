@@ -73,6 +73,27 @@
         "type": "github"
       }
     },
+    "flake-parts_3": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "x1-control-panel",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1756770412,
+        "narHash": "sha256-+uWLQZccFHwqpGqr2Yt5VsW/PbeJVTn9Dk6SHWhNRPw=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "4524271976b625a4a605beefd893f270620fd751",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems_2"
@@ -349,7 +370,8 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
         "sunsetr": "sunsetr",
-        "systems": "systems_3"
+        "systems": "systems_3",
+        "x1-control-panel": "x1-control-panel"
       }
     },
     "rust-overlay": {
@@ -434,6 +456,27 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "x1-control-panel": {
+      "inputs": {
+        "flake-parts": "flake-parts_3",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1758871445,
+        "narHash": "sha256-mr3Q6I82lAgJKBnN5Y5oIKaxUiz1UjLFJi9KHRb8tKs=",
+        "owner": "Blu3SoulsIT",
+        "repo": "NiX1-Control-Panel",
+        "rev": "851c7700a06b8aea2755d6610f0beadd473da6e2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Blu3SoulsIT",
+        "repo": "NiX1-Control-Panel",
         "type": "github"
       }
     }
