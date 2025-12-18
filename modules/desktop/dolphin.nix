@@ -16,7 +16,10 @@
 
         kdePackages.xdg-desktop-portal-kde
         kdePackages.plasma-integration
+
+        kdePackages.kservice
       ];
+
 
       xdg.portal = {
         enable = true;
@@ -33,6 +36,7 @@
       home.sessionVariables = {
         SAL_USE_VCLPLUGIN = "kf6";   # The magic switch
         GTK_USE_PORTAL = "1";        # Force other GTK apps to try portals
+        XDG_MENU_PREFIX = "plasma-";
       };
     };
   };
