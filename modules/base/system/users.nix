@@ -3,15 +3,16 @@
     { pkgs, ... }:
     {
       users = {
-        mutableUsers = true; # Set password with passd 
+        mutableUsers = true; # Set password with passd
         users = {
           kieran = {
             isNormalUser = true;
-            description = "Karun Sandhu";
+            description = "Kieran Beals";
             shell = pkgs.fish;
             extraGroups = [
               "wheel"
               "input"
+              "docker"
             ];
           };
         };
