@@ -12,7 +12,7 @@
           enable = true;
           image = ../../walls/nature.jpg;
           polarity = "dark";
-          base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
+          base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
 
           fonts =
             let
