@@ -3,6 +3,6 @@
   flake.modules.nixos.nixos =
 	  { config, ... }:
 		{
-      time.timeZone = "America/Toronto";
+      time.timeZone = "America/Los_Angeles";
 		};
 }
