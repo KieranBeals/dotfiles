@@ -6,7 +6,8 @@
 	    lua-language-server
 			rust-analyzer
 			cargo
-			nixd
+			nixd # What nvim uses for .nix
+			nil # What Zed uses for .nix
 			java-language-server
 	  ];
 	};
