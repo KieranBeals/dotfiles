@@ -1,8 +1,5 @@
-{ lib, ... }:
 {
-  flake.modules.nixos.nixos =
-	  { config, ... }:
-		{
-      time.timeZone = "America/Los_Angeles";
-		};
+  flake.modules.nixos.nixos = {
+    time.timeZone = "America/Toronto";
+  };
 }
