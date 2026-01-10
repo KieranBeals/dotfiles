@@ -42,12 +42,14 @@
         programs.plasma = {
           enable = true;
 
-          # input = {
-          #   touchpad = {
-          #     enabled = true;
-          #     naturalScrolling = true;
-          #   };
-          # };
+          configFile = {
+            "kwinrc".Compositing = {
+              UnredirectFullscreen = "true";
+              AllowBlockingCompositing = "false";
+              Enabled = "true";
+              VSync = "false";
+            };
+          };
 
           workspace = {
             theme = "breeze-dark";
