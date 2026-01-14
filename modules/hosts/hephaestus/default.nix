@@ -8,6 +8,7 @@ let
     "school"
     "development"
     "amd"
+    "vpn"
   ];
 in
 {
