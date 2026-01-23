@@ -4,6 +4,10 @@
     nixos.desktop =
       { pkgs, ... }:
       {
+        environment.systemPackages = with pkgs; [
+          kdePackages.partitionmanager
+        ];
+
         services.xserver.enable = true;
         services.displayManager.sddm.enable = true;
         services.displayManager.sddm.wayland.enable = true;
