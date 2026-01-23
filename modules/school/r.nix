@@ -3,7 +3,12 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
-        rstudio
+        (pkgs.rstudioWrapper.override {
+              packages = with pkgs.rPackages; [
+                ggplot2
+                moments
+              ];
+            })
       ];
     };
 }
