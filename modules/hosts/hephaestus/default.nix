@@ -9,6 +9,7 @@ let
     "development"
     "amd"
     "vpn"
+    "work"
   ];
 in
 {
