@@ -4,7 +4,7 @@
     {
       home.packages = [
         (pkgs.nix-webapps-lib.mkChromiumApp {
-          appName = "google-tidal";
+          appName = "tidal-music";
           categories = [
             "Music"
           ];
