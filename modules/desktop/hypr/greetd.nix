@@ -2,7 +2,7 @@
   flake.modules.nixos.desktop = 
   { pkgs, ... }:
   let
-    tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+    tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
   in
   {
     services.greetd = {
