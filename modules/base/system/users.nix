@@ -8,7 +8,7 @@
           kieran = {
             isNormalUser = true;
             description = "Kieran Beals";
-            shell = pkgs.fish;
+            shell = pkgs.zsh;
             extraGroups = [
               "wheel"
               "input"
