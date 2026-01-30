@@ -23,24 +23,16 @@
     #   inputs.systems.follows = "systems";
     # };
 
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
-    };
+    # stylix = {
+    #   url = "github:nix-community/stylix";
+    #   inputs = {
+    #     flake-parts.follows = "flake-parts";
+    #     nixpkgs.follows = "nixpkgs";
+    #     systems.follows = "systems";
+    #   };
+    # };
 
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-    };
-
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+    awww.url = "git+https://codeberg.org/LGFae/awww";
 
     # disko = {
     #   url = "github:nix-community/disko";
