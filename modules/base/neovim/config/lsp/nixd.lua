@@ -9,7 +9,15 @@
 
 ---@type vim.lsp.Config
 return {
-  cmd = { 'nixd' },
-  filetypes = { 'nix' },
-  root_markers = { 'flake.nix', '.git' },
+	cmd = { 'nixd' },
+	filetypes = { 'nix' },
+	root_markers = { 'flake.nix', '.git' },
+	settings = {
+		nixpkgs = {
+			expr = "import (builtins.getFlake(toString ./.)).inputs.nixpkgs { }",
+		},
+		formatting = {
+			command = { "nixfmt" },
+		},
+	},
 }

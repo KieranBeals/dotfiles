@@ -7,6 +7,7 @@
 			rust-analyzer
 			cargo
 			nixd # What nvim uses for .nix
+      nixfmt
 			nil # What Zed uses for .nix
 			java-language-server
 	  ];
