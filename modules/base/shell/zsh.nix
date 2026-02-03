@@ -1,7 +1,7 @@
 {
-  flake.modules.nixos.desktop =	{
+  flake.modules.nixos.desktop = {
     programs.zsh = {
-		  enable = true;
+      enable = true;
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
       enableCompletion = true;

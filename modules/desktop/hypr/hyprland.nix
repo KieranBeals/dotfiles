@@ -9,7 +9,7 @@
 
       environment.systemPackages = with pkgs; [
         rofi
-				wl-clipboard-rs
+        wl-clipboard-rs
       ];
     };
 }

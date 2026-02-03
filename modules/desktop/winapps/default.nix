@@ -11,16 +11,16 @@
     # };
 
     homeManager.desktop =
-    { pkgs, ... }:
-    {
-      # home.file.".config/winapps/winapps.conf" = {
-      #   source = ./winapps.conf;
-      #   recursive = false;
-      # };
-      home.packages = with pkgs; [
-        winboat
-        docker
-      ];
-    };
+      { pkgs, ... }:
+      {
+        # home.file.".config/winapps/winapps.conf" = {
+        #   source = ./winapps.conf;
+        #   recursive = false;
+        # };
+        home.packages = with pkgs; [
+          winboat
+          docker
+        ];
+      };
   };
 }

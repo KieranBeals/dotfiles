@@ -1,6 +1,5 @@
 {
-  flake.modules.nixos.desktop = 
-  {
-	  services.pipewire.enable = true;
+  flake.modules.nixos.desktop = {
+    services.pipewire.enable = true;
   };
 }

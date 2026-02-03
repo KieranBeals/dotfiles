@@ -7,7 +7,7 @@ in
     programs = {
       git = {
         enable = true;
-				settings = {
+        settings = {
           user = {
             inherit (meta.users.kieran) email;
             inherit (meta.users.kieran) name;
@@ -36,7 +36,7 @@ in
             graph = "log --all --decorate --graph --oneline";
             oops = "checkout --";
           };
-				};
+        };
       };
 
       # Syntax-highlighting

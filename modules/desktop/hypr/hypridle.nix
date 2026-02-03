@@ -1,6 +1,5 @@
 {
-  flake.modules.nixos.desktop =
-    {
-		  services.hypridle.enable = true;
-    };
+  flake.modules.nixos.desktop = {
+    services.hypridle.enable = true;
+  };
 }
