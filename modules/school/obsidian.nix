@@ -1,9 +1,13 @@
 {
-  flake.modules.homeManager.school =
-    { pkgs, ... }:
-    {
-      home.packages = with pkgs; [
-        obsidian
-      ];
-    };
+  flake.modules = {
+    nixos.school =
+      { pkgs, ... }:
+      {
+        services.languagetool.enable = true;
+
+        environment.systemPackages = with pkgs; [
+          obsidian
+        ];
+      };
+  };
 }
