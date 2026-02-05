@@ -32,8 +32,6 @@
       };
     };
 
-    awww.url = "git+https://codeberg.org/LGFae/awww";
-
     # disko = {
     #   url = "github:nix-community/disko";
     #   inputs.nixpkgs.follows = "nixpkgs";
