@@ -1,9 +1,0 @@
-{
-  flake.modules.nixos.desktop =
-  { pkgs, ...}:
-  {
-    environment.systemPackages = with pkgs; [
-      gnome-disk-utility
-    ];
-  };
-}

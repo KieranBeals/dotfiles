@@ -11,7 +11,7 @@
 
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOs/nixpkgs/nixos-25.11";
-		# Really just importing just to import stuff at this point lmao
+    # Really just importing just to import stuff at this point lmao
     systems.url = "github:nix-systems/default-linux";
 
     # flake-compat = {
@@ -32,10 +32,6 @@
       };
     };
 
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-    };
-
     # disko = {
     #   url = "github:nix-community/disko";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -54,16 +50,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-		# Programs
-		neovim-nightly-overlay = {
+    # Programs
+    neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-		helium-browser = {
-		  url = "github:FKouhai/helium2nix";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+    helium-browser = {
+      url = "github:FKouhai/helium2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # lanzaboote.url = "github:nix-community/lanzaboote";
 
@@ -72,7 +68,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-		gotcha = {
+    gotcha = {
       url = "github:MrSom3body/gotcha";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -95,6 +91,10 @@
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-webapps.url = "github:TLATER/nix-webapps";
+
+    proton-pass-cli.url = "github:tomsch/proton-pass-cli-nix";
     # sops-nix = {
     #   url = "github:Mic92/sops-nix";
     #   inputs.nixpkgs.follows = "nixpkgs";

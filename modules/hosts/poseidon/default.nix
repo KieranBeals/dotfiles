@@ -8,7 +8,8 @@ let
     "messaging"
     "school"
     "development"
-];
+    "work"
+  ];
 in
 {
   flake = {

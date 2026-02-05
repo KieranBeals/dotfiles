@@ -9,17 +9,17 @@
     };
 
     homeManager.desktop =
-    { pkgs, ... }:
-    {
-      home.packages = with pkgs; [
-        gcr
-        seahorse
-        gnome-keyring
-      ];
+      { pkgs, ... }:
+      {
+        home.packages = with pkgs; [
+          gcr
+          seahorse
+          gnome-keyring
+        ];
 
-      services.gnome-keyring = {
-        enable = true;
+        services.gnome-keyring = {
+          enable = true;
+        };
       };
-    };
   };
 }
