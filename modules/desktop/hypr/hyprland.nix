@@ -10,6 +10,8 @@
       environment.systemPackages = with pkgs; [
         rofi
         wl-clipboard-rs
+
+        playerctl
       ];
     };
 }
