@@ -1,22 +1,13 @@
-/*
-## -- Subtle Waybar theme -- ##
-
-## Author: sane1090x
-## YouTube: https://youtube.com/@sane1090x
-*/
-
 {
   "layer": "top",
   "position": "top",
   "margin-top": 13,
   "reload_style_on_change": true,
 
-  // Individual islands
   "modules-left": ["clock", "group/expand"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": ["pulseaudio", "bluetooth", "network", "battery"],
 
-  // Separator
   "custom/media-separator": {
     "exec": "~/.config/waybar/scripts/media_separator.sh",
     "interval": 1,
@@ -24,7 +15,6 @@
     "tooltip": false
   },
 
-  // Custom modules
   "custom/notification": {
     "tooltip-format": "Open Overwatch",
     "format": "",
@@ -33,14 +23,12 @@
   },
 
   "custom/weather": {
-    "format": "{}",
-    "format-alt": " {alt}",
-    "format-alt-click": "click",
-    "interval": 3600,
+    "exec": "~/.config/waybar/scripts/weather.sh",
     "return-type": "json",
-    "exec": "$HOME/.config/waybar/scripts/get-weather.sh",
+    "interval": 1800,
+    "tooltip": true,
     "exec-if": "ping wttr.in -c1",
-    "tooltip": true
+    "on-click": "ghostty --wait-after-command -e curl 'wttr.in?n'",
   },
 
   "custom/expand": {
@@ -60,13 +48,12 @@
     "max-length": 40,
     "on-click": "playerctl play-pause",
     "on-click-right": "playerctl stop",
-    "smooth-scrolling-threshold": 1, // This value was tested using a trackpad, it should be lowered if using a mouse.
+    "smooth-scrolling-threshold": 1, 
     "on-scroll-up": "playerctl next",
     "on-scroll-down": "playerctl previous",
-    "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null" // Script in resources/custom_modules folder
+    "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null" 
   },
 
-  // Rest of the modules
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
@@ -95,10 +82,10 @@
   },
 
   "network": {
-    "interface": "wlo1",
+    // "interface": "wlo1",
     "format-alt": "{essid} {icon}",
     "format-wifi": "{icon}",
-    "format-wifi-alt": "{icon}",
+    // "format-wifi-alt": "{icon}",
     "format-ethernet": "󰈀",
     "format-disconnected": "󰤭",
     "max-length": 50,
