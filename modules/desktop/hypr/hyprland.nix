@@ -11,6 +11,7 @@
         rofi
         wl-clipboard-rs
         brightnessctl
+        playerctl
       ];
     };
 }

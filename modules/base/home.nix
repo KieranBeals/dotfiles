@@ -3,6 +3,7 @@
     nixos.nixos = {
       home-manager = {
         backupFileExtension = "backup";
+        overwriteBackup = true; # TODO Change this
         useGlobalPkgs = true;
         useUserPackages = true;
       };

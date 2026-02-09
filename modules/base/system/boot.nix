@@ -13,7 +13,7 @@ in
           systemd.enable = true;
         };
 
-        kernelPackages = pkgs.linuxPackages_latest;
+        kernelPackages = pkgs.linuxPackages_zen;
 
         consoleLogLevel = 3;
         kernelParams = [
