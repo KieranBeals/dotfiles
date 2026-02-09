@@ -5,6 +5,9 @@
       {
         environment.systemPackages = with pkgs; [
           waybar
+          blueman
+          jq
+          pavucontrol
         ];
       };
     homeManager.desktop = {
