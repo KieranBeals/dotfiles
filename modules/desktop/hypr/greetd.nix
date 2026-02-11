@@ -15,6 +15,8 @@
         };
       };
 
+      security.pam.services.greetd.fprintAuth = false;
+
       systemd.services.greetd.serviceConfig = {
         Type = "idle";
         StandardInput = "tty";
