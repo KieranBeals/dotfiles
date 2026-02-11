@@ -85,6 +85,7 @@
     // "interface": "wlo1",
     "format-alt": "{essid} {icon}",
     "format-wifi": "{icon}",
+    "interface": "wl*", // fixes problem when on vpn
     // "format-wifi-alt": "{icon}",
     "format-ethernet": "󰈀",
     "format-disconnected": "󰤭",
