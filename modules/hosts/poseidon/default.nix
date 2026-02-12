@@ -4,11 +4,13 @@ let
     "nvidia"
     "base"
     "desktop"
+    "hyprland"
     "gaming"
     "messaging"
     "school"
     "development"
     "work"
+    "vpn"
   ];
 in
 {

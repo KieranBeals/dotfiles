@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.desktop =
+  flake.modules.nixos.hyprland =
     { pkgs, ... }:
     let
       tuigreet = "${pkgs.tuigreet}/bin/tuigreet";

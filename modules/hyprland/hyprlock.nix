@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.desktop = {
+  flake.modules.nixos.hyprland = {
     programs.hyprlock.enable = true;
   };
 }

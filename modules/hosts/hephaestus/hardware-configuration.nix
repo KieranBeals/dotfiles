@@ -15,7 +15,6 @@
 
       hardware.bluetooth.enable = true;
 
-      networking.networkmanager.enable = true;
       networking.networkmanager.wifi.powersave = false; # EDUROAM :)))
 
       boot.loader.systemd-boot.enable = true;
