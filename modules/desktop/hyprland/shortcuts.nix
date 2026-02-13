@@ -16,36 +16,89 @@
             );
           in
           pkgs.writeShellScriptBin "my-menu" ''
-            exec ${lib.getExe pkgs.wlr-which-key} ${configFile}
+            hyprctl dispatch submap pause 
+            ${lib.getExe pkgs.wlr-which-key} ${configFile} 
+            hyprctl dispatch submap reset
           '';
       in
       {
         wayland.windowManager.hyprland = {
 
           settings = {
+            "$mainMod" = "SUPER";
+
             bind = [
-              # (
-              #   "$mainMod SHIFT, O, exec, "
-              #   + lib.getExe (mkMenu [
-              #     {
-              #       key = "h";
-              #       desc = "Browser";
-              #       cmd = "helium";
-              #     }
-              #     {
-              #       key = "q";
-              #       desc = "Terminal";
-              #       cmd = "ghostty";
-              #     }
-              #   ])
-              # )
+              (
+                "$mainMod, O, exec, "
+                + lib.getExe (mkMenu [
+                  {
+                    key = "h";
+                    desc = "Browser";
+                    cmd = "helium";
+                  }
+                  {
+                    key = "q";
+                    desc = "Terminal";
+                    submenu = [
+                      {
+                        key = "q";
+                        desc = "Terminal";
+                        cmd = "ghostty";
+                      }
+                      {
+                        key = "c";
+                        desc = "Edit Dotfiles";
+                        cmd = "ghostty -e nvim ~/dotfiles";
+                      }
+                    ];
+                  }
+                  {
+                    key = "r";
+                    desc = "rofi";
+                    submenu = [
+                      {
+                        key = "s";
+                        desc = "SSH";
+                        cmd = "rofi -show ssh";
+                      }
+                      {
+                        key = "w";
+                        desc = "Windows";
+                        cmd = "rofi -show window";
+                      }
+                      {
+                        key = "i";
+                        desc = "Screenshots";
+                        cmd = "ls -t /tmp/screenshot-*.png 2>/dev/null | rofi -dmenu -p \"Edit screenshot:\" | xargs -r satty --filename";
+                      }
+                    ];
+                  }
+                  {
+                    key = "d";
+                    desc = "Discord";
+                    cmd = "discord";
+                  }
+                  {
+                    key = "s";
+                    desc = "Steam";
+                    cmd = "steam";
+                  }
+                  {
+                    key = "e";
+                    desc = "File Manager";
+                    cmd = "Thunar";
+                  }
+
+                ])
+              )
+
+              "$mainMod, Q, exec, ghostty"
 
               # Basic binds
               "$mainMod, C, killactive,"
               "$mainMod, M, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"
-              "$mainMod, E, exec, $fileManager"
               "$mainMod, V, togglefloating,"
-              "$mainMod, R, exec, $menu"
+              "$mainMod, R, exec, rofi -show drun"
               "$mainMod, P, pseudo,"
 
               # Move focus
@@ -126,6 +179,12 @@
               "match:class = hyprland-run, move = 20 monitor_h-120, float = yes"
             ];
           };
+          extraConfig = ''
+            submap = pause
+              # No binds here means all keybinds are ignored
+              bind = , escape, submap, reset
+            submap = reset
+          '';
         };
       };
   };

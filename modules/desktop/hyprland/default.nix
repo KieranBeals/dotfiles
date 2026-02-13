@@ -1,6 +1,16 @@
+{ config, ... }:
+let
+  flakemodules = config.flake.modules;
+in
 {
   flake.modules = {
+
     nixos.hyprland = {
+      imports = [
+        flakemodules.nixos.waybar
+        flakemodules.nixos.desktop
+      ];
+
       programs.hyprland = {
         enable = true;
         xwayland.enable = true;
@@ -11,6 +21,11 @@
     homeManager.hyprland =
       { config, ... }:
       {
+        imports = [
+          flakemodules.homeManager.waybar
+          flakemodules.homeManager.desktop
+        ];
+
         wayland.windowManager.hyprland = {
           enable = true;
           systemd.enable = false;

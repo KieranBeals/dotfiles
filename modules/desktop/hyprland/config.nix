@@ -8,7 +8,6 @@
           wl-clipboard-rs
           brightnessctl
           playerctl
-          sunsetr
         ];
       };
     homeManager.hyprland = {
@@ -32,7 +31,6 @@
           "$menu" = "rofi -show run";
           "$notes" = "obsidian";
           "$browser" = "helium";
-          "$mainMod" = "SUPER";
 
           # Autostart
           exec-once = [
@@ -40,12 +38,7 @@
             "[workspace 1 silent] $terminal"
             "[workspace 2 silent] $notes"
             "[workspace 3 silent] $browser"
-            "swww-daemon"
-            "swww img dotfiles/walls/nature.jpg"
-            "dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY"
-            "gnome-keyring-daemon --start --components=secrets"
             "protonvpn connect"
-            "sunsetr"
           ];
 
           # Environment variables

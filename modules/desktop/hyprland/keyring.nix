@@ -1,6 +1,6 @@
 {
   flake.modules = {
-    nixos.desktop = {
+    nixos.hyprland = {
       security.pam.services = {
         greetd.enableGnomeKeyring = true;
         greetd-password.enableGnomeKeyring = true;
@@ -8,7 +8,7 @@
       };
     };
 
-    homeManager.desktop =
+    homeManager.hyprland =
       { pkgs, ... }:
       {
         home.packages = with pkgs; [
@@ -19,6 +19,14 @@
 
         services.gnome-keyring = {
           enable = true;
+        };
+        wayland.windowManager.hyprland = {
+          settings = {
+            exec-once = [
+              "dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY"
+              "gnome-keyring-daemon --start --components=secrets"
+            ];
+          };
         };
       };
   };

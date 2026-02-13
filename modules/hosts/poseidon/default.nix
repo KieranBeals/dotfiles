@@ -3,7 +3,6 @@ let
   modules = [
     "nvidia"
     "base"
-    "desktop"
     "hyprland"
     "gaming"
     "messaging"
