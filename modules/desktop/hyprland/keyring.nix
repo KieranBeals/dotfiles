@@ -20,14 +20,10 @@
         services.gnome-keyring = {
           enable = true;
         };
-        wayland.windowManager.hyprland = {
-          settings = {
-            exec-once = [
-              "dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY"
-              "gnome-keyring-daemon --start --components=secrets"
-            ];
-          };
-        };
+        wayland.windowManager.hyprland.settings.exec-once = [
+          "dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY"
+          "gnome-keyring-daemon --start --components=secrets"
+        ];
       };
   };
 }
