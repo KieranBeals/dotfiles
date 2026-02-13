@@ -2,7 +2,6 @@
 let
   modules = [
     "base"
-    "desktop"
     "hyprland"
     "gaming"
     "messaging"

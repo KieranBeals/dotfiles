@@ -1,6 +1,6 @@
 {
   flake.modules = {
-    nixos.desktop =
+    nixos.waybar =
       { pkgs, ... }:
       {
         environment.systemPackages = with pkgs; [
@@ -10,7 +10,7 @@
           pavucontrol
         ];
       };
-    homeManager.desktop = {
+    homeManager.waybar = {
       home.file.".config/waybar" = {
         source = ./config;
         recursive = true;

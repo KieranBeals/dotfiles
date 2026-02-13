@@ -352,3 +352,12 @@ require("catppuccin").setup({
 })
 
 vim.cmd.colorscheme "catppuccin"
+
+-- when opening vim with nvim ./dir this will cd the working dir to that dir
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if vim.v.argv[3] then
+      vim.cmd.tcd(vim.fn.expand(vim.v.argv[3]))
+    end
+  end,
+})
