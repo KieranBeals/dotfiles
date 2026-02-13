@@ -92,6 +92,8 @@
                 ])
               )
 
+              "SUPER ALT SHIFT, escape, submap, pause"
+
               "$mainMod, Q, exec, ghostty"
 
               # Basic binds
@@ -182,7 +184,7 @@
           extraConfig = ''
             submap = pause
               # No binds here means all keybinds are ignored
-              bind = , escape, submap, reset
+              bind = SUPER ALT SHIFT, escape, submap, reset
             submap = reset
           '';
         };
