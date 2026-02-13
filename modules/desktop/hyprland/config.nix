@@ -61,7 +61,7 @@
             rounding = 0;
             rounding_power = 2;
             active_opacity = 1.0;
-            inactive_opacity = 0.7;
+            inactive_opacity = 1.0;
 
             shadow = {
               enabled = true;
@@ -70,7 +70,7 @@
             };
 
             blur = {
-              enabled = true;
+              enabled = false;
               size = 3;
               passes = 3;
               vibrancy = 0.1696;
