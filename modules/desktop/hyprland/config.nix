@@ -34,7 +34,6 @@
 
           # Autostart
           exec-once = [
-            "waybar"
             "[workspace 1 silent] $terminal"
             "[workspace 2 silent] $notes"
             "[workspace 3 silent] $browser"

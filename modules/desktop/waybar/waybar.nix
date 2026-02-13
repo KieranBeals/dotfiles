@@ -15,6 +15,11 @@
         source = ./config;
         recursive = true;
       };
+
+      # Autostart if on hyprland
+      wayland.windowManager.hyprland.settings.exec-once = [
+        "waybar"
+      ];
     };
   };
 }
