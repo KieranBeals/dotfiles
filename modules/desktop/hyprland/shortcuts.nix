@@ -88,6 +88,11 @@
                     desc = "File Manager";
                     cmd = "Thunar";
                   }
+                  {
+                    key = "o";
+                    desc = "Notes";
+                    cmd = "obsidian";
+                  }
 
                 ])
               )
