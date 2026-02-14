@@ -11,7 +11,8 @@
     homeManager.hyprland.wayland.windowManager.hyprland.settings = {
       exec-once = [
         "swww-daemon"
-        "swww img dotfiles/walls/nature.jpg"
+        "swww img dotfiles/walls/black.webp --transition-type none"
+        "swww img dotfiles/walls/nature.jpg --transition-fps 240 --transition-type grow"
       ];
     };
   };
