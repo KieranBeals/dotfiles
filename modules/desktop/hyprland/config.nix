@@ -32,13 +32,6 @@
           "$notes" = "obsidian";
           "$browser" = "helium";
 
-          # Autostart
-          exec-once = [
-            "[workspace 1 silent] $terminal"
-            "[workspace 2 silent] $notes"
-            "[workspace 3 silent] $browser"
-          ];
-
           # Environment variables
           env = [
             "XCURSOR_SIZE,24"
