@@ -26,7 +26,6 @@
           };
 
           # Variables
-          "$terminal" = "ghostty";
           "$fileManager" = "thunar";
           "$menu" = "rofi -show run";
           "$notes" = "obsidian";
