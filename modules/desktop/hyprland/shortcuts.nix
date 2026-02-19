@@ -29,7 +29,7 @@
 
             bind = [
               (
-                "$mainMod, O, exec, "
+                "$mainMod, SPACE, exec, "
                 + lib.getExe (mkMenu [
                   {
                     key = "h";
