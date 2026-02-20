@@ -32,6 +32,8 @@
       };
     };
 
+    tidaLuna.url = "github:Inrixia/TidaLuna";
+
     # disko = {
     #   url = "github:nix-community/disko";
     #   inputs.nixpkgs.follows = "nixpkgs";

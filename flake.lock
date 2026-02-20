@@ -622,6 +622,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1768875095,
+        "narHash": "sha256-dYP3DjiL7oIiiq3H65tGIXXIT1Waiadmv93JS0sS+8A=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ed142ab1b3a092c4d149245d0c4126a5d7ea00b0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -697,6 +713,7 @@
         "stylix": "stylix",
         "sunsetr": "sunsetr",
         "systems": "systems_4",
+        "tidaLuna": "tidaLuna",
         "winapps": "winapps",
         "x1-control-panel": "x1-control-panel"
       }
@@ -851,6 +868,24 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tidaLuna": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1771360778,
+        "narHash": "sha256-i0UtMQ2XHVArnZqYzaD80cvLkj1yW8xoIB879Or2o0Q=",
+        "owner": "Inrixia",
+        "repo": "TidaLuna",
+        "rev": "2ea044aa750b014fbad91d895e55dcd06a102b5b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Inrixia",
+        "repo": "TidaLuna",
         "type": "github"
       }
     },
