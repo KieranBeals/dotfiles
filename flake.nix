@@ -34,6 +34,8 @@
 
     tidaLuna.url = "github:Inrixia/TidaLuna";
 
+    hister.url = "github:asciimoo/hister";
+
     # disko = {
     #   url = "github:nix-community/disko";
     #   inputs.nixpkgs.follows = "nixpkgs";
