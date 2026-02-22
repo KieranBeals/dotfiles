@@ -79,6 +79,8 @@
 
     sunsetr.url = "github:psi4j/sunsetr";
 
+    copyparty.url = "github:9001/copyparty";
+
     # nix-index-database = {
     #   url = "github:nix-community/nix-index-database";
     #   inputs.nixpkgs.follows = "nixpkgs";
