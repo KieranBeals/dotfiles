@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.desktop =
+  flake.modules.nixos.copyparty =
     { pkgs, ... }:
     {
       nixpkgs.overlays = [ inputs.copyparty.overlays.default ];
