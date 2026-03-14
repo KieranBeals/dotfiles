@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.desktop = {
+  flake.modules.nixos.nixos = {
     programs.zsh = {
       enable = true;
       autosuggestions.enable = true;
