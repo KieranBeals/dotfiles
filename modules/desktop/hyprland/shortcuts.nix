@@ -107,6 +107,7 @@
               "$mainMod, V, togglefloating,"
               "$mainMod, R, exec, rofi -show drun"
               "$mainMod, P, pseudo,"
+              "$mainMod, F, fullscreen, 0"
 
               # Move focus
               "$mainMod, H, movefocus, l"
@@ -180,11 +181,6 @@
               ", XF86AudioPrev, exec, playerctl previous"
             ];
 
-            windowrule = [
-              "match:class = .*, suppress_event = maximize"
-              "match:class = ^$, match:title = ^$, match:xwayland = true, match:float = true, match:fullscreen = false, match:pin = false, no_focus = true"
-              "match:class = hyprland-run, move = 20 monitor_h-120, float = yes"
-            ];
           };
           extraConfig = ''
             submap = pause

@@ -3,11 +3,11 @@ let
   modules = [
     "base"
     "hyprland"
-    "gaming"
     "messaging"
     "school"
     "development"
     "amd"
+    "apk"
     "vpn"
     "work"
   ];
