@@ -4,7 +4,7 @@ let
     "nvidia"
     "base"
     "hyprland"
-    "gaming"
+    "apk"
     "messaging"
     "school"
     "development"
