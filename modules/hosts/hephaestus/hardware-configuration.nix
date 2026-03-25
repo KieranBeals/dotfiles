@@ -13,6 +13,12 @@
         inputs.nixos-hardware.nixosModules.framework-16-7040-amd
       ];
 
+      services.logind = {
+        lidSwitch = "ignore";
+        lidSwitchExternalPower = "ignore";
+        lidSwitchDocked = "ignore";
+      };
+
       hardware.bluetooth.enable = true;
 
       networking.networkmanager.wifi.powersave = false; # EDUROAM :)))
