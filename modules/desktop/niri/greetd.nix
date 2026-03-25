@@ -1,0 +1,31 @@
+{
+  flake.modules.nixos.niri =
+    { pkgs, ... }:
+    let
+      tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
+    in
+    {
+      services.greetd = {
+        enable = true;
+        settings = {
+          default_session = {
+            command = "${tuigreet} --time --remember --cmd niri";
+            user = "greeter";
+          };
+        };
+      };
+
+      security.pam.services.greetd.fprintAuth = false;
+
+      systemd.services.greetd.serviceConfig = {
+        Type = "idle";
+        StandardInput = "tty";
+        StandardOutput = "tty";
+        StandardError = "journal"; # Without this errors will spam on screen
+        # Without these bootlogs will spam on screen
+        TTYReset = true;
+        TTYVHangup = true;
+        TTYVTDisallocate = true;
+      };
+    };
+}
