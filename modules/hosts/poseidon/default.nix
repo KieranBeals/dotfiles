@@ -3,10 +3,12 @@ let
   modules = [
     "nvidia"
     "base"
+    "ai"
     "hyprland"
     "apk"
     "messaging"
     "school"
+    "gaming"
     "development"
     "work"
     "vpn"
