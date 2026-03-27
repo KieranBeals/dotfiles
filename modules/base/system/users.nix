@@ -14,6 +14,7 @@
               "input"
               "docker"
               "networkmanager"
+              "bluetooth"
             ];
           };
         };
