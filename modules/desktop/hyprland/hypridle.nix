@@ -20,21 +20,21 @@
 
           listener = [
             {
-              timeout = 0 * 60 + 30;
+              timeout = 2 * 60;
               on-timeout = "brightnessctl -s set 10";
               on-resume = "brightnessctl -r";
             }
             {
-              timeout = 1 * 60 + 0;
+              timeout = 5 * 60;
               on-timeout = "pidof hyprlock || hyprlock";
             }
             {
-              timeout = 2 * 60 + 0;
+              timeout = 10 * 60;
               on-timeout = "hyprctl dispatch dpms off";
               on-resume = "hyprctl dispatch dpms on";
             }
             {
-              timeout = 2 * 60 + 30;
+              timeout = 20 * 60;
               on-timeout = "systemctl suspend";
             }
           ];
