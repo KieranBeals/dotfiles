@@ -4,7 +4,7 @@
       { pkgs, ... }:
       {
         environment.systemPackages = with pkgs; [
-          swww
+          awww
         ];
       };
 
@@ -18,7 +18,7 @@
                 img="$(find ~/Pictures/Wallpapers -type f \( -name '*.webp' -o -name '*.png' -o -name '*.jpg' \) | shuf -n 1)"
 
                 if [ -n "$img" ]; then
-                  swww img "$img" --transition-fps 240 --resize crop --transition-type grow
+                  awww img "$img" --transition-fps 240 --resize crop --transition-type grow
                 fi
 
                 sleep 60
@@ -27,8 +27,8 @@
           in
           {
             exec-once = [
-              "swww-daemon"
-              "swww clear"
+              "awww-daemon"
+              "awww clear"
               "${random-wallpaper}"
             ];
           };
