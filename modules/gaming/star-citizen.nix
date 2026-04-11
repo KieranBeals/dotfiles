@@ -4,7 +4,7 @@
     { pkgs, ... }:
     {
       environment.systemPackages = [
-        inputs.nix-citizen.packages.${pkgs.hostPlatform.system}.rsi-launcher
+        inputs.nix-citizen.packages.${pkgs.stdenv.hostPlatform.system}.rsi-launcher
       ];
     };
 }
