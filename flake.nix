@@ -14,6 +14,13 @@
     # Really just importing just to import stuff at this point lmao
     systems.url = "github:nix-systems/default-linux";
 
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
+    nix-citizen = {
+      url = "github:LovingMelody/nix-citizen";
+      inputs.nix-gaming.follows = "nix-gaming";
+    };
+
     # flake-compat = {
     #   url = "github:edolstra/flake-compat";
     # };
