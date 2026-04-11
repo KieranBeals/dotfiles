@@ -5,7 +5,7 @@
       {
         programs.thunar = {
           enable = true;
-          plugins = with pkgs.xfce; [
+          plugins = with pkgs; [
             thunar-vcs-plugin
             thunar-archive-plugin
             thunar-media-tags-plugin
