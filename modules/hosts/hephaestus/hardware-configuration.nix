@@ -10,7 +10,7 @@
     {
       imports = [
         (modulesPath + "/installer/scan/not-detected.nix")
-        inputs.nixos-hardware.nixosModules.framework-16-7040-amd
+        inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
       ];
 
       services.logind = {
