@@ -105,7 +105,6 @@
               "$mainMod, C, killactive,"
               "$mainMod, M, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"
               "$mainMod, V, togglefloating,"
-              "$mainMod, R, exec, rofi -show drun"
               "$mainMod, P, pseudo,"
               "$mainMod, F, fullscreen, 0"
 

@@ -27,7 +27,6 @@
 
           # Variables
           "$fileManager" = "thunar";
-          "$menu" = "rofi -show run";
           "$notes" = "obsidian";
           "$browser" = "helium";
 
