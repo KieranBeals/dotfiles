@@ -104,7 +104,7 @@
               # Basic binds
               "$mainMod, C, killactive,"
               "$mainMod, M, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"
-              "$mainMod, V, togglefloating,"
+              "$mainMod SHIFT, F, togglefloating,"
               "$mainMod, P, pseudo,"
               "$mainMod, F, fullscreen, 0"
 
