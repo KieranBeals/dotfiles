@@ -29,7 +29,12 @@
               exec = "t3code";
               icon = "t3code";
               categories = [ "Development" ];
-              keywords = [ "claude" "codex" "ai" "coding" ];
+              keywords = [
+                "claude"
+                "codex"
+                "ai"
+                "coding"
+              ];
             })
           ];
           postBuild = ''
@@ -37,6 +42,8 @@
             cp ${icon} $out/share/icons/hicolor/scalable/apps/t3code.svg
           '';
         })
+        pkgs.claude-code
+        pkgs.codex
       ];
     };
 }
