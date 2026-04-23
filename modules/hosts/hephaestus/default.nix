@@ -1,6 +1,7 @@
 { config, ... }:
 let
   modules = [
+    "ai"
     "base"
     "hyprland"
     "messaging"
