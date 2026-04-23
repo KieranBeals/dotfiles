@@ -1,0 +1,9 @@
+creation_rules:
+  - path_regex: secrets/proton-drive\.yaml$
+    age:
+      - age1dqafwvry0efcwagplqp8ez0ul9tmlduqhpnsx5wgz36z57d635zszg5k8z
+      - age15jgs3y0uqrxu8027jnrvfc6vsryd6uuyfmtudxspjpfl6y2gqgeqqhj623
+  - path_regex: secrets/default-user-password\.yaml$
+    age:
+      - age1dqafwvry0efcwagplqp8ez0ul9tmlduqhpnsx5wgz36z57d635zszg5k8z
+      - age15jgs3y0uqrxu8027jnrvfc6vsryd6uuyfmtudxspjpfl6y2gqgeqqhj623
