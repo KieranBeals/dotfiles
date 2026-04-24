@@ -6,6 +6,7 @@ let
     "hyprland"
     "messaging"
     "school"
+    "gaming"
     "development"
     "amd"
     "apk"
