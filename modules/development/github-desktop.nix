@@ -2,8 +2,8 @@
   flake.modules.homeManager.development =
     { pkgs, ... }:
     {
-      home.packages = with pkgs; [
-        github-desktop
+      home.packages = [
+        pkgs.stable.github-desktop
       ];
     };
 }
