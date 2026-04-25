@@ -8,26 +8,6 @@
       };
 
       services.gnome.gnome-keyring.enable = true;
-
     };
-
-    #    homeManager.hyprland =
-    #      { pkgs, ... }:
-    #      {
-    #        home.packages = with pkgs; [
-    #          gcr
-    #          seahorse
-    #          gnome-keyring
-    #        ];
-    #
-    #        services.gnome-keyring = {
-    #          enable = true;
-    #        };
-    #        wayland.windowManager.hyprland.settings.exec-once = [
-    #          "dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY"
-    #          "gnome-keyring-daemon --start --components=secrets"
-    #
-    #        ];
-    #      };
   };
 }
