@@ -43,6 +43,11 @@
 
     hister.url = "github:asciimoo/hister";
 
+    omnisearch = {
+      url = "git+https://git.bwaaa.monster/omnisearch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # disko = {
     #   url = "github:nix-community/disko";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -58,12 +63,6 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Programs
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -83,6 +82,8 @@
       url = "github:MrSom3body/gotcha";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    codex.url = "github:openai/codex";
 
     sunsetr.url = "github:psi4j/sunsetr";
 
