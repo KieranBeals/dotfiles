@@ -5,8 +5,14 @@ in
 {
   flake.modules = {
     nixos.messaging =
-      { pkgs, lib, ... }:
+      {
+        config,
+        pkgs,
+        lib,
+        ...
+      }:
       let
+        vpnEnabled = config.dotfiles.vpn.enable or false;
         discordExe = lib.getExe pkgs.discord;
         discordUidRange = "${toString discordNoVpnUid}-${toString discordNoVpnUid}";
         installDiscordNoVpnRules = pkgs.writeShellScript "install-discord-novpn-rules" ''
@@ -57,68 +63,76 @@ in
         '';
       in
       {
-        users.groups.discord-novpn.gid = discordNoVpnUid;
-        users.users.discord-novpn = {
-          isSystemUser = true;
-          uid = discordNoVpnUid;
-          group = "discord-novpn";
-          extraGroups = [
-            "audio"
-            "render"
-            "video"
-          ];
-          home = "/var/lib/discord-novpn";
-          createHome = true;
-        };
-
-        services.resolved.enable = true;
-        networking.networkmanager.dns = "systemd-resolved";
-
-        systemd.services.discord-novpn-routing = {
-          description = "Install policy routing rules for Discord outside Proton VPN";
-          after = [ "network-online.target" ];
-          wants = [ "network-online.target" ];
-          wantedBy = [ "multi-user.target" ];
-          serviceConfig = {
-            Type = "oneshot";
-            RemainAfterExit = true;
-            ExecStart = installDiscordNoVpnRules;
-          };
-        };
-
-        networking.networkmanager.dispatcherScripts = [
-          {
-            source = pkgs.writeShellScript "discord-novpn-dispatcher" ''
-              case "$2" in
-                up|down|pre-up|pre-down|vpn-up|vpn-down|ip-change|ip4-change|ip6-change|dhcp4-change|dhcp6-change|connectivity-change|connectivity-timeout)
-                  ${installDiscordNoVpnRules}
-                  ;;
-              esac
-            '';
-            type = "basic";
-          }
-        ];
-
-        security.sudo.extraRules = [
-          {
-            users = [ "kieran" ];
-            commands = [
-              {
-                command = discordExe;
-                options = [
-                  "NOPASSWD"
-                  "SETENV"
-                ];
-              }
+        config = lib.mkIf vpnEnabled {
+          users.groups.discord-novpn.gid = discordNoVpnUid;
+          users.users.discord-novpn = {
+            isSystemUser = true;
+            uid = discordNoVpnUid;
+            group = "discord-novpn";
+            extraGroups = [
+              "audio"
+              "render"
+              "video"
             ];
-            runAs = "discord-novpn";
-          }
-        ];
+            home = "/var/lib/discord-novpn";
+            createHome = true;
+          };
+
+          services.resolved.enable = true;
+          networking.networkmanager.dns = "systemd-resolved";
+
+          systemd.services.discord-novpn-routing = {
+            description = "Install policy routing rules for Discord outside Proton VPN";
+            after = [ "network-online.target" ];
+            wants = [ "network-online.target" ];
+            wantedBy = [ "multi-user.target" ];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+              ExecStart = installDiscordNoVpnRules;
+            };
+          };
+
+          networking.networkmanager.dispatcherScripts = [
+            {
+              source = pkgs.writeShellScript "discord-novpn-dispatcher" ''
+                case "$2" in
+                  up|down|pre-up|pre-down|vpn-up|vpn-down|ip-change|ip4-change|ip6-change|dhcp4-change|dhcp6-change|connectivity-change|connectivity-timeout)
+                    ${installDiscordNoVpnRules}
+                    ;;
+                esac
+              '';
+              type = "basic";
+            }
+          ];
+
+          security.sudo.extraRules = [
+            {
+              users = [ "kieran" ];
+              commands = [
+                {
+                  command = discordExe;
+                  options = [
+                    "NOPASSWD"
+                    "SETENV"
+                  ];
+                }
+              ];
+              runAs = "discord-novpn";
+            }
+          ];
+        };
       };
 
     homeManager.messaging =
-      { pkgs, lib, ... }:
+      {
+        config,
+        pkgs,
+        lib,
+        ...
+      }:
       let
+        vpnEnabled = config.dotfiles.vpn.enable or false;
         discordExe = lib.getExe pkgs.discord;
         discordLauncherBody = ''
           set -euo pipefail
@@ -190,22 +204,26 @@ in
             --user-data-dir=/var/lib/discord-novpn/.config/discord \
             "''${discord_args[@]}"
         '';
-        discordWrapper = pkgs.writeShellApplication {
-          name = "discord";
+        discordStableWrapper = pkgs.writeShellApplication {
+          name = if vpnEnabled then "discord-normal" else "discord";
           runtimeInputs = with pkgs; [
             coreutils
           ];
           text = discordStableRun;
         };
-        discordNoVpnWrapper = pkgs.writeShellApplication {
-          name = "discord-novpn";
-          runtimeInputs = with pkgs; [
-            acl
-            coreutils
-            xhost
-          ];
-          text = discordNoVpnRun;
-        };
+        mkDiscordNoVpnWrapper =
+          name:
+          pkgs.writeShellApplication {
+            inherit name;
+            runtimeInputs = with pkgs; [
+              acl
+              coreutils
+              xhost
+            ];
+            text = discordNoVpnRun;
+          };
+        discordRoutedWrapper = mkDiscordNoVpnWrapper "discord";
+        discordNoVpnWrapper = mkDiscordNoVpnWrapper "discord-novpn";
         discordDesktop = pkgs.makeDesktopItem {
           name = "discord";
           desktopName = "Discord";
@@ -221,14 +239,22 @@ in
         discordPackage = pkgs.symlinkJoin {
           name = "discord";
           paths = [
-            discordWrapper
+            discordStableWrapper
+          ]
+          ++ lib.optionals vpnEnabled [
+            discordRoutedWrapper
             discordNoVpnWrapper
+          ]
+          ++ [
             discordDesktop
           ];
           postBuild = ''
             mkdir -p $out/share/icons/hicolor/256x256/apps
             ln -s ${pkgs.discord}/opt/Discord/discord.png $out/share/icons/hicolor/256x256/apps/discord.png
           '';
+          passthru = {
+            defaultLauncher = if vpnEnabled then "discord-novpn" else "discord";
+          };
         };
       in
       {
