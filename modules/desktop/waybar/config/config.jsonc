@@ -4,7 +4,7 @@
   "margin-top": 13,
   "reload_style_on_change": true,
 
-  "modules-left": ["clock", "group/expand"],
+  "modules-left": ["clock", "custom/weather", "custom/notification", "power-profiles-daemon"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": ["pulseaudio", "bluetooth", "network", "battery"],
 
@@ -29,16 +29,6 @@
     "tooltip": true,
     "exec-if": "ping wttr.in -c1",
     "on-click": "ghostty --wait-after-command -e curl 'wttr.in?n'",
-  },
-
-  "custom/expand": {
-    "format": "󰬫",
-    "tooltip-format": "Expand drawer..."
-  },
-
-  "custom/expandleft": {
-    "format": "󰬩",
-    "tooltip-format": "Expand drawer..."
   },
 
   "custom/media": {
@@ -121,31 +111,6 @@
     "format-plugged": "{capacity}% 󰂄 ",
     "tooltip-format": "{timeTo}\nPower: {power}W",
     "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-  },
-
-  "group/expand": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 600,
-      "transition-to-left": true,
-      "click-to-reveal": true
-    },
-    "modules": [
-      "custom/expand",
-      "custom/weather",
-      "custom/notification",
-      "power-profiles-daemon"
-    ]
-  },
-
-  "group/expandleft": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 600,
-      "transition-to-left": true,
-      "click-to-reveal": true
-    },
-    "modules": ["custom/expandleft", "custom/media"]
   },
 
   "cpu": {

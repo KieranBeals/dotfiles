@@ -76,8 +76,7 @@ tooltip-label {
 #temperature:hover,
 #power-profiles-daemon:hover,
 #custom-weather:hover,
-#custom-media:hover,
-#custom-expandleft:hover {
+#custom-media:hover {
   transition: all 0.3s ease;
   color: @aqua;                             /* @tertiary → @aqua */
 }
@@ -139,23 +138,6 @@ tooltip-label {
   animation-direction: alternate;
 }
 
-/* --- Drawers --- */
-#group-expand {
-  padding: 0px 5px;
-  transition: all 0.3s ease;
-}
-
-#custom-expand,
-#custom-expandleft {
-  padding: 0px 5px;
-  color: alpha(@fg, 0.9);                   /* @on_surface → @fg */
-  transition: all 0.3s ease;
-}
-
-#custom-expand:hover {
-  color: alpha(@fg, 0.2);                   /* rgba(255,255,255,0.2) → alpha(@fg,0.2) */
-}
-
 /* --- Stats --- */
 #cpu,
 #memory,
@@ -186,4 +168,3 @@ tooltip-label {
   from { color: @orange; }
   to   { color: alpha(@orange, 0.4); }
 }
-

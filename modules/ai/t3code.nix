@@ -5,10 +5,10 @@
     let
       t3code = pkgs.appimageTools.wrapType2 {
         pname = "t3code";
-        version = "0.0.17";
+        version = "0.0.21";
         src = pkgs.fetchurl {
-          url = "https://github.com/pingdotgg/t3code/releases/download/v0.0.17/T3-Code-0.0.17-x86_64.AppImage";
-          hash = "sha256-uS+o1nRA3R7hn9BaomrdsGVC8UcpPFFRG3a1qGVrs8w=";
+          url = "https://github.com/pingdotgg/t3code/releases/download/v0.0.21/T3-Code-0.0.21-x86_64.AppImage";
+          hash = "sha256-eQCfskpl+JJOyaYY7ogYCi0ZCuWNRcEpseWMniS/LCQ=";
         };
       };
 
