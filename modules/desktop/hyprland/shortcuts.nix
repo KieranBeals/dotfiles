@@ -20,6 +20,26 @@
             ${lib.getExe pkgs.wlr-which-key} ${configFile} 
             hyprctl dispatch submap reset
           '';
+        workspaceKeys = [
+          "grave"
+          "1"
+          "2"
+          "3"
+          "4"
+          "5"
+          "6"
+          "7"
+          "8"
+          "9"
+          "0"
+          "minus"
+          "equal"
+          "backspace"
+        ];
+        workspaceBindings =
+          lib.imap0 (i: key: "$mainMod, ${key}, workspace, ${toString (i + 1)}") workspaceKeys;
+        moveToWorkspaceBindings =
+          lib.imap0 (i: key: "$mainMod SHIFT, ${key}, movetoworkspace, ${toString (i + 1)}") workspaceKeys;
       in
       {
         wayland.windowManager.hyprland = {
@@ -27,135 +47,115 @@
           settings = {
             "$mainMod" = "SUPER";
 
-            bind = [
-              (
-                "$mainMod, SPACE, exec, "
-                + lib.getExe (mkMenu [
-                  {
-                    key = "h";
-                    desc = "Browser";
-                    cmd = "helium";
-                  }
-                  {
-                    key = "q";
-                    desc = "Terminal";
-                    submenu = [
-                      {
-                        key = "q";
-                        desc = "Terminal";
-                        cmd = "ghostty";
-                      }
-                      {
-                        key = "c";
-                        desc = "Edit Dotfiles";
-                        cmd = "ghostty -e nvim ~/dotfiles";
-                      }
-                    ];
-                  }
-                  {
-                    key = "r";
-                    desc = "rofi";
-                    submenu = [
-                      {
-                        key = "s";
-                        desc = "SSH";
-                        cmd = "rofi -show ssh";
-                      }
-                      {
-                        key = "w";
-                        desc = "Windows";
-                        cmd = "rofi -show window";
-                      }
-                      {
-                        key = "i";
-                        desc = "Screenshots";
-                        cmd = "ls -t /tmp/screenshot-*.png 2>/dev/null | rofi -dmenu -p \"Edit screenshot:\" | xargs -r satty --filename";
-                      }
-                    ];
-                  }
-                  {
-                    key = "d";
-                    desc = "Discord";
-                    cmd = "discord";
-                  }
-                  {
-                    key = "s";
-                    desc = "Steam";
-                    cmd = "steam";
-                  }
-                  {
-                    key = "e";
-                    desc = "File Manager";
-                    cmd = "Thunar";
-                  }
-                  {
-                    key = "o";
-                    desc = "Notes";
-                    cmd = "obsidian";
-                  }
+            bind =
+              [
+                (
+                  "$mainMod, SPACE, exec, "
+                  + lib.getExe (mkMenu [
+                    {
+                      key = "h";
+                      desc = "Browser";
+                      cmd = "helium";
+                    }
+                    {
+                      key = "q";
+                      desc = "Terminal";
+                      submenu = [
+                        {
+                          key = "q";
+                          desc = "Terminal";
+                          cmd = "ghostty";
+                        }
+                        {
+                          key = "c";
+                          desc = "Edit Dotfiles";
+                          cmd = "ghostty -e nvim ~/dotfiles";
+                        }
+                      ];
+                    }
+                    {
+                      key = "r";
+                      desc = "rofi";
+                      submenu = [
+                        {
+                          key = "s";
+                          desc = "SSH";
+                          cmd = "rofi -show ssh";
+                        }
+                        {
+                          key = "w";
+                          desc = "Windows";
+                          cmd = "rofi -show window";
+                        }
+                        {
+                          key = "i";
+                          desc = "Screenshots";
+                          cmd = "ls -t /tmp/screenshot-*.png 2>/dev/null | rofi -dmenu -p \"Edit screenshot:\" | xargs -r satty --filename";
+                        }
+                      ];
+                    }
+                    {
+                      key = "d";
+                      desc = "Discord";
+                      cmd = "discord";
+                    }
+                    {
+                      key = "s";
+                      desc = "Steam";
+                      cmd = "steam";
+                    }
+                    {
+                      key = "e";
+                      desc = "File Manager";
+                      cmd = "Thunar";
+                    }
+                    {
+                      key = "o";
+                      desc = "Notes";
+                      cmd = "obsidian";
+                    }
 
-                ])
-              )
+                  ])
+                )
 
-              "SUPER ALT SHIFT, escape, submap, pause"
+                "SUPER ALT SHIFT, escape, submap, pause"
 
-              "$mainMod, Q, exec, ghostty"
+                "$mainMod, Q, exec, ghostty"
 
-              # Basic binds
-              "$mainMod, C, killactive,"
-              "$mainMod, M, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"
-              "$mainMod SHIFT, F, togglefloating,"
-              "$mainMod, P, pseudo,"
-              "$mainMod, F, fullscreen, 0"
+                # Basic binds
+                "$mainMod, C, killactive,"
+                "$mainMod, M, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"
+                "$mainMod SHIFT, F, togglefloating,"
+                "$mainMod, P, pseudo,"
+                "$mainMod, F, fullscreen, 0"
 
-              # Move focus
-              "$mainMod, H, movefocus, l"
-              "$mainMod, L, movefocus, r"
-              "$mainMod, K, movefocus, u"
-              "$mainMod, J, movefocus, d"
+                # Move focus
+                "$mainMod, H, movefocus, l"
+                "$mainMod, L, movefocus, r"
+                "$mainMod, K, movefocus, u"
+                "$mainMod, J, movefocus, d"
 
-              # Move window
-              "$mainMod SHIFT, H, movewindow, l"
-              "$mainMod SHIFT, L, movewindow, r"
-              "$mainMod SHIFT, K, movewindow, u"
-              "$mainMod SHIFT, J, movewindow, d"
+                # Move window
+                "$mainMod SHIFT, H, movewindow, l"
+                "$mainMod SHIFT, L, movewindow, r"
+                "$mainMod SHIFT, K, movewindow, u"
+                "$mainMod SHIFT, J, movewindow, d"
+              ]
+              ++ workspaceBindings
+              ++ moveToWorkspaceBindings
+              ++ [
+                # Special workspace
+                "$mainMod, S, togglespecialworkspace, magic"
+                "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
-              # Workspaces
-              "$mainMod, 1, workspace, 1"
-              "$mainMod, 2, workspace, 2"
-              "$mainMod, 3, workspace, 3"
-              "$mainMod, 4, workspace, 4"
-              "$mainMod, 5, workspace, 5"
-              "$mainMod, 6, workspace, 6"
-              "$mainMod, 7, workspace, 7"
-              "$mainMod, 8, workspace, 8"
-              "$mainMod, 9, workspace, 9"
-              "$mainMod, 0, workspace, 10"
+                # Scroll workspaces
+                "$mainMod, mouse_down, workspace, e+1"
+                "$mainMod, mouse_up, workspace, e-1"
 
-              # Move to workspace
-              "$mainMod SHIFT, 1, movetoworkspace, 1"
-              "$mainMod SHIFT, 2, movetoworkspace, 2"
-              "$mainMod SHIFT, 3, movetoworkspace, 3"
-              "$mainMod SHIFT, 4, movetoworkspace, 4"
-              "$mainMod SHIFT, 5, movetoworkspace, 5"
-              "$mainMod SHIFT, 6, movetoworkspace, 6"
-              "$mainMod SHIFT, 7, movetoworkspace, 7"
-              "$mainMod SHIFT, 8, movetoworkspace, 8"
-              "$mainMod SHIFT, 9, movetoworkspace, 9"
-              "$mainMod SHIFT, 0, movetoworkspace, 10"
-
-              # Special workspace
-              "$mainMod, S, togglespecialworkspace, magic"
-              "$mainMod SHIFT, S, movetoworkspace, special:magic"
-
-              # Scroll workspaces
-              "$mainMod, mouse_down, workspace, e+1"
-              "$mainMod, mouse_up, workspace, e-1"
-
-              # Screenshot
-              ", PRINT, exec, FILE=/tmp/screenshot-$(date +%s).png && hyprshot -m region --freeze -o $(dirname $FILE) -f $(basename $FILE) && wl-copy < $FILE && notify-send \"Screenshot copied\" \"$(basename $FILE)\""
-              "$mainMod, PRINT, exec, ls -t /tmp/screenshot-*.png 2>/dev/null | rofi -dmenu -p \"Edit screenshot:\" | xargs -r satty --filename"
-            ];
+                # Screenshot
+                ", PRINT, exec, FILE=/tmp/screenshot-$(date +%s).png && hyprshot -m region --freeze -o $(dirname $FILE) -f $(basename $FILE) && wl-copy < $FILE && notify-send \"Screenshot copied\" \"$(basename $FILE)\""
+                "$mainMod, PRINT, exec, ls -t /tmp/screenshot-*.png 2>/dev/null | rofi -dmenu -p \"Edit screenshot:\" | xargs -r satty --filename"
+              ];
 
             # Mouse binds
             bindm = [
