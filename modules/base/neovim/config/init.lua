@@ -12,6 +12,7 @@ vim.o.confirm = true
 
 vim.pack.add({
   { src = "https://github.com/catppuccin/nvim" },
+  { src = "https://github.com/Saghen/blink.lib" },
   { src = "https://github.com/Saghen/blink.cmp" },
   { src = "https://github.com/stevearc/oil.nvim" },
   { src = "https://github.com/folke/which-key.nvim" },
@@ -356,8 +357,9 @@ vim.cmd.colorscheme "catppuccin"
 -- when opening vim with nvim ./dir this will cd the working dir to that dir
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    if vim.v.argv[3] then
-      vim.cmd.tcd(vim.fn.expand(vim.v.argv[3]))
+    local arg = vim.fn.argv(0)
+    if type(arg) == "string" and vim.fn.isdirectory(arg) == 1 then
+      vim.cmd.tcd(vim.fn.fnameescape(arg))
     end
   end,
 })
