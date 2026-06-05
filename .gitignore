@@ -1,0 +1,11 @@
+# devenv — generated state / store-symlinks, regenerated on `devenv shell`
+.devenv/
+.devenv.flake.nix
+devenv.local.nix
+
+# direnv
+.direnv/
+
+# nix build outputs
+result
+result-*
