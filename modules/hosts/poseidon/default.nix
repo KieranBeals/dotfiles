@@ -1,24 +1,31 @@
 { config, ... }:
-let
-  modules = [
-    "nvidia"
-    "base"
-    "ai"
-    "hyprland"
-    "apk"
-    "messaging"
-    "school"
-    "gaming"
-    "development"
-    "work"
-    "vpn"
-  ];
-in
 {
   flake = {
     nixosConfigurations.poseidon = config.flake.lib.mkSystems.linux "poseidon";
-    modules.nixos."hosts/poseidon" = {
-      imports = config.flake.lib.loadNixosAndHmModuleForUser config modules;
+
+    modules.nixos."hosts/poseidon" = config.flake.lib.mkNixosHost config {
+      systemModules = [
+        "ai"
+        "apk"
+        "development"
+        "gaming"
+        "hyprland"
+        "messaging"
+        "school"
+        "vpn"
+      ];
+      homeModules = [
+        "apk"
+        "development"
+        "gaming"
+        "hyprland"
+        "messaging"
+        "nvidia"
+        "school"
+        "vpn"
+        "work"
+      ];
+      users = [ "kieran" ];
     };
   };
 }
